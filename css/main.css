@@ -12,13 +12,15 @@ body {
 	bottom: 0px;
 	top:    0px;
 	border-right:1px solid #999;
-	overflow: auto;
 }
 
-	#sidebar ul {
-		margin: 0px;
+
+
+	#sidebar ul#saved-searches {
+		margin: 10px 0 0 0;
 		padding:0px;
 		list-style: none;
+		overflow:auto;
 	}
 
 		#sidebar ul li.saved-search {
@@ -35,6 +37,35 @@ body {
 			color:#FFFFFF;
 		}
 
+	#sidebar-buttons {
+		position:absolute;
+		height:  25px;
+		bottom:   0px;
+		left:     0px;
+		width:  150px;
+		padding:  5px;
+		border-top:1px solid #666;
+		background:#9999CC;
+	}
+		#sidebar-buttons .button {
+			width:     15px;
+			height:    15px;
+			display:block;
+			text-align:center;
+			border:1px solid #666699;
+			color:     #FFFFFF;
+			font-size: 14px;
+			font-weight:bold;
+			padding:   3px;
+			cursor:    pointer;
+			-webkit-border-radius:5px;
+		}
+		#sidebar-buttons .button:hover {
+			background:#333366;
+			color:#FFFFFF;
+		}
+		
+		
 
 #messages {
 	padding:0px;
@@ -45,6 +76,7 @@ body {
 	position:absolute;
 	background-color:#FFFFFF;
 	overflow:auto;
+	
 }
 
 

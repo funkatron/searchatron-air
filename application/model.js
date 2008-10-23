@@ -6,7 +6,13 @@ App.Model = {}
 
 App.Model.init = function() {
 	
-	
+	/*
+		load up searches and display in view
+	*/
+	App.Model.savedSearches = App.Model.loadSearches();
+	$.each(App.Model.savedSearches, function(i) {
+		App.View.addNewSearch(this);
+	});
 	
 };
 
@@ -17,7 +23,7 @@ App.Model.getSearchResults = function(searchstr) {
 		'url':'http://search.twitter.com/search.json?',
 		'data':{
 			"rpp": 50,
-			"q": searchstr,
+			"q":   searchstr,
 		},
 		'dataType':'text',
 		'type':'GET',
@@ -44,4 +50,19 @@ App.Model.getSearchResults = function(searchstr) {
 		}
 	});
 	
+};
+
+
+App.Model.addSearch = function(str) {
+	App.Model.savedSearches.push(str);
+	$().trigger('searchAdded', [str]);
+};
+
+
+
+App.Model.loadSearches = function() {
+	
+	var searches = ['"twitter api"', 'al3x', 'scala', 'spaz'];
+	
+	return searches;
 };

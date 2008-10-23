@@ -44,3 +44,28 @@ App.View.endNewSearchResults = function() {
 	$('.message:even').addClass('even');
 	$('.message:odd').addClass('odd');
 }
+
+App.View.promptForNewSearch = function() {
+	var rs = prompt("Enter a new search:", 'spaz');
+	if (rs) {
+		air.trace('promptForNewSearch:'+rs);
+		$().trigger('newSearchSubmitted', [rs.toString()]);
+	}
+};
+
+App.View.createSearchElement = function(str) {
+	air.trace('createSearchElement:'+str);
+	var srel  = '';
+	srel += '<li class="saved-search">'+str+'</li>';
+	return srel;
+};
+
+App.View.addNewSearch = function(str) {
+	air.trace('addNewSearch:'+str);
+	var srel = App.View.createSearchElement(str);
+	$('#saved-searches').append(srel);
+};
+
+
+
+
