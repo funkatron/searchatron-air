@@ -1,5 +1,6 @@
 /*
 	This is a port of the CodeIgniter helper "autolink" to javascript
+	It finds and links both web addresses and email addresses
 */
 function autolink(str, type, popup) {
 	if (!type) {
@@ -7,15 +8,11 @@ function autolink(str, type, popup) {
 	}
 
 	var re_noemail = /(^|\s|\()((http(s?):\/\/)|(www\.))(\w+[^\s\)<]+)/gi;
-	var re_nourl   = /([a-zA-Z0-9_\.\-\+]+)@([a-zA-Z0-9\-]+)\.([a-zA-Z0-9\-\.]*)/gi;
-	
-	// air.trace(re_nourl);
-	// air.trace(re_noemail);
+	var re_nourl   = /(^|\s|\()([a-zA-Z0-9_\.\-\+]+)@([a-zA-Z0-9\-]+)\.([a-zA-Z0-9\-\.]*)([^\s\)<]+)/gi;
 
 	if (type != 'email')
 	{
-		if (ms = re_noemail.exec(str)) {
-			air.trace(ms.toString());
+		while (ms = re_noemail.exec(str)) {
 			var pop = (popup == true) ? " target=\"_blank\" ": "";
 			var period = ''
 			if ( /\.$/.test(ms[6]) ) {
@@ -42,18 +39,14 @@ function autolink(str, type, popup) {
 
 	if (type != 'url')
 	{
-		if (ms = re_nourl.exec(str))
+		while (ms = re_nourl.exec(str))
 		{
-			// alert(ms.toString());
-			
 			var period = ''
-			if ( /\./.test(ms[3]) ) {
+			if ( /\./.test(ms[5]) ) {
 				period = '.';
-				ms[3] = ms[3].slice(0, -1);
+				ms[5] = ms[5].slice(0, -1);
 			}
 			
-			air.trace(ms);
-			air.trace(str);
 			/*
 				sometimes we can end up with a null instead of a blank string,
 				so we need to force the issue in javascript.
@@ -63,19 +56,8 @@ function autolink(str, type, popup) {
 					ms[x] = '';
 				}
 			}
-			str = str.replace(ms[0], '<a href="mailto:'+ms[1]+'@'+ms[2]+'.'+ms[3]+'">'+ms[1]+'@'+ms[2]+'.'+ms[3]+'<a/>'+period);
+			str = str.replace(ms[0], ms[1]+'<a href="mailto:'+ms[2]+'@'+ms[3]+'.'+ms[4]+ms[5]+'">'+ms[2]+'@'+ms[3]+'.'+ms[4]+ms[5]+'<a/>'+period);
 			air.trace(str);
-			// for (i = 0; i < sizeof(matches['0']); i++)
-			// {
-			// 	period = '';
-			// 	if (preg_match("|\.|", matches['3'][i]))
-			// 	{
-			// 		period = '.';
-			// 		matches['3'][i] = substr(matches['3'][i], 0, -1);
-			// 	}
-			// 
-			// 	
-			// }
 		}
 	}
 

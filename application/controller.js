@@ -8,6 +8,15 @@ App.Controller.init = function() {
 	
 	
 	/*
+		Window event bindings
+	*/
+	window.nativeWindow.addEventListener(air.Event.CLOSING, function(e) {
+		App.Prefs.save();
+	});
+	
+	
+	
+	/*
 		DOM event bindings via delegation
 	*/
 	$('#sidebar').intercept( 'click', {
@@ -31,11 +40,11 @@ App.Controller.init = function() {
 	/*
 		Custom event bindings
 	*/
-	$().bind('beginNewSearchResults', function() {
+	$().bind('beginNewSearchResults', function(e) {
 		App.View.beginNewSearchResults();
 	});
 
-	$().bind('endNewSearchResults', function() {
+	$().bind('endNewSearchResults', function(e) {
 		App.View.endNewSearchResults();
 	});
 	

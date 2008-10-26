@@ -4,9 +4,8 @@ function createXMLFromString (string) {
 	xmlParser = new DOMParser();
 	xmlDocument = xmlParser.parseFromString(string, 'text/xml');
 	return xmlDocument;
-  }
-  catch (e) {
-	output("Can't create XML document.");
+  } catch (e) {
+	air.trace("Can't create XML document.");
 	return null;
   }
 }

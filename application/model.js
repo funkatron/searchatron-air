@@ -55,6 +55,7 @@ App.Model.getSearchResults = function(searchstr) {
 
 App.Model.addSearch = function(str) {
 	App.Model.savedSearches.push(str);
+	App.Prefs.set('searches', App.Model.savedSearches);
 	$().trigger('searchAdded', [str]);
 };
 
@@ -62,7 +63,8 @@ App.Model.addSearch = function(str) {
 
 App.Model.loadSearches = function() {
 	
-	var searches = ['"twitter api"', 'al3x', 'scala', 'spaz'];
+	// var searches = ['"twitter api"', 'al3x', 'scala', 'spaz'];
+	var searches = App.Prefs.get('searches');
 	
 	return searches;
 };

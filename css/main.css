@@ -14,13 +14,20 @@ body {
 	border-right:1px solid #999;
 }
 
-
+	#sidebar #searches-wrapper {
+		overflow:auto;
+		position:absolute;
+		top:     0px;
+		bottom: 35px;
+		left:    0px;
+		right:   0px;
+	}
 
 	#sidebar ul#saved-searches {
-		margin: 10px 0 0 0;
-		padding:0px;
+
+		margin:  0;
+		padding: 10px 5px;
 		list-style: none;
-		overflow:auto;
 	}
 
 		#sidebar ul li.saved-search {
