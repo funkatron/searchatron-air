@@ -56,8 +56,18 @@ App.Model.getSearchResults = function(searchstr) {
 App.Model.addSearch = function(str) {
 	App.Model.savedSearches.push(str);
 	App.Prefs.set('searches', App.Model.savedSearches);
-	$().trigger('searchAdded', [str]);
+	// $().trigger('searchAdded', [str]);
 };
+
+
+App.Model.deleteSearch = function(searchstr) {
+	App.Model.savedSearches = App.Model.savedSearches.filter(function(item) {
+		return item != searchstr;
+	});
+	// App.Model.savedSearches.push(str);
+	App.Prefs.set('searches', App.Model.savedSearches);
+};
+
 
 
 

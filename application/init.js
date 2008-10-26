@@ -1,5 +1,9 @@
 App = {}
 
+$().ready(function() {
+	App.init();
+});
+
 App.init = function() {
 	
 	window.htmlLoader.navigateInSystemBrowser = true;

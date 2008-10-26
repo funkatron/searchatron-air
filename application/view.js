@@ -53,12 +53,14 @@ App.View.promptForNewSearch = function() {
 	}
 };
 
+
 App.View.createSearchElement = function(str) {
 	air.trace('createSearchElement:'+str);
 	var srel  = '';
 	srel += '<li class="saved-search">'+str+'</li>';
 	return srel;
 };
+
 
 App.View.addNewSearch = function(str) {
 	air.trace('addNewSearch:'+str);
@@ -67,5 +69,30 @@ App.View.addNewSearch = function(str) {
 };
 
 
+App.View.deleteSearch = function(searchstr) {
+	$('.saved-search').each( function(i) {
+		if ($(this).text() == searchstr) {
+			$(this).remove();
+		}
+	})
+};
 
+
+App.View.showSearchContextMenu = function(e) {
+	var contextMenu = App.View.buildSearchContextMenu(e);
+	contextMenu.display(window.nativeWindow.stage, e.clientX, e.clientY);
+};
+
+
+App.View.buildSearchContextMenu = function(e) {
+	var search = $(e.target).text();
+	air.trace('search to delete:'+search);
+	var con_menu = new air.NativeMenu();
+    var command = con_menu.addItem(new air.NativeMenuItem("Delete search"));
+    command.addEventListener(air.Event.SELECT, function(e) {
+		$().trigger('deleteSearch', [search]);
+	});
+    return con_menu;
+    
+};
 

@@ -4,6 +4,15 @@
 */
 
 /*
+	dump an object's first level to console
+*/
+function dump(obj) {
+	for(var x in obj) {
+		air.trace("'"+x+"':"+obj[x]);
+	}
+}
+
+/*
 	Open a URL in the default system web browser
 */
 function openInBrowser(url) {

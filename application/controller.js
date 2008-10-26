@@ -21,18 +21,24 @@ App.Controller.init = function() {
 	*/
 	$('#sidebar').intercept( 'click', {
 		
-			'.saved-search': function(e) {
-				var searchstr = $(e.target).text();
-				App.Model.getSearchResults(searchstr);
-			},
+		'.saved-search': function(e) {
+			var searchstr = $(e.target).text();
+			App.Model.getSearchResults(searchstr);
+		},
+	
+		'#add-search': function(e) {
+			App.View.promptForNewSearch();
+		},
+
+	} );
+	$('#sidebar').intercept( 'contextmenu', {
 		
-			'#add-search': function(e) {
-				App.View.promptForNewSearch();
-			},
-
-		}
-	);
-
+		'.saved-search': function(e) {
+			e.preventDefault();
+			App.View.showSearchContextMenu(e);
+		},
+		
+	} );
 
 	
 
@@ -52,11 +58,18 @@ App.Controller.init = function() {
 		// update the model
 		air.trace('newSearchSubmitted:'+str);
 		App.Model.addSearch(str);
-	});
-	
-	$().bind('searchAdded', function(e, str) {
+		
 		// update the view
 		air.trace('searchAdded:'+str);
 		App.View.addNewSearch(str);
 	});
+	
+	$().bind('deleteSearch', function(e, searchstr) {
+		// update view
+		App.View.deleteSearch(searchstr);
+		
+		// update model
+		App.Model.deleteSearch(searchstr);
+	});
+
 };
