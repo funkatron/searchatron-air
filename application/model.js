@@ -42,8 +42,7 @@ App.Model.getSearchResults = function(searchstr) {
 			});
 			
 			$().trigger('endNewSearchResults');
-			
-			// air.trace(JSON.stringify(data.results));
+
 		},
 		'error':function() {
 			air.trace('there was an error');
@@ -56,7 +55,6 @@ App.Model.getSearchResults = function(searchstr) {
 App.Model.addSearch = function(str) {
 	App.Model.savedSearches.push(str);
 	App.Prefs.set('searches', App.Model.savedSearches);
-	// $().trigger('searchAdded', [str]);
 };
 
 
@@ -64,7 +62,6 @@ App.Model.deleteSearch = function(searchstr) {
 	App.Model.savedSearches = App.Model.savedSearches.filter(function(item) {
 		return item != searchstr;
 	});
-	// App.Model.savedSearches.push(str);
 	App.Prefs.set('searches', App.Model.savedSearches);
 };
 
@@ -72,8 +69,6 @@ App.Model.deleteSearch = function(searchstr) {
 
 
 App.Model.loadSearches = function() {
-	
-	// var searches = ['"twitter api"', 'al3x', 'scala', 'spaz'];
 	var searches = App.Prefs.get('searches');
 	
 	return searches;

@@ -1,5 +1,7 @@
 body {
 	font-family: Arial, "MS Trebuchet", sans-serif;
+	-webkit-user-select:none;
+	overflow:none;
 }
 
 #sidebar {
@@ -38,6 +40,7 @@ body {
 			color:#FFFFFF;
 			-webkit-border-radius:15px;
 			cursor:pointer;
+			-webkit-user-select:text;
 		}
 		#sidebar ul li.saved-search:hover {
 			background:#333366;
@@ -115,8 +118,35 @@ ul#messagelist {
 		}
 		.message .message-body {
 			margin-left:64px;
+			-webkit-user-select:text;
 		}
 		.message .message-meta {
 			font-size:90%;
+			-webkit-user-select:text;
 		}
 		
+		
+#statusbar-wrapper {
+	font-size:10px;
+	position: absolute;
+	bottom:    0px;
+	left:     20px;
+	right:    20px;
+	display:  none;
+	height:   17px;
+}
+	#statusbar {
+		padding:    3px;
+		font-size: 10px;
+		background:#000;
+		opacity:   .8;
+		color:     #FFF;
+		position:  absolute;
+		-webkit-border-top-right-radius:5px;
+		-webkit-border-top-left-radius:5px;
+		display:  none;
+		position:absolute;
+		left:       0px;
+		right:      0px;
+	}
+

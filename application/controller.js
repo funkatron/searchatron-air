@@ -23,6 +23,7 @@ App.Controller.init = function() {
 		
 		'.saved-search': function(e) {
 			var searchstr = $(e.target).text();
+			App.View.showStatus("Sending search request…");
 			App.Model.getSearchResults(searchstr);
 		},
 	
@@ -47,10 +48,12 @@ App.Controller.init = function() {
 		Custom event bindings
 	*/
 	$().bind('beginNewSearchResults', function(e) {
+		App.View.showStatus("Processing response…");
 		App.View.beginNewSearchResults();
 	});
 
 	$().bind('endNewSearchResults', function(e) {
+		App.View.hideStatus();
 		App.View.endNewSearchResults();
 	});
 	

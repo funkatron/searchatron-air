@@ -96,3 +96,27 @@ App.View.buildSearchContextMenu = function(e) {
     
 };
 
+
+App.View.showStatus = function(msg) {
+	if (App.View.statusTimeout) {
+		clearTimeout(App.View.statusTimeout);
+	}
+
+	$('#statusbar-wrapper').show();
+	$('#statusbar').html(msg);
+	if (!$('#statusbar').is(':visible')) {
+		$('#statusbar').show('slide', {direction:'down'}, 250);
+	}
+	
+	App.View.statusTimeout = setTimeout(App.View.hideStatus, 6000);
+
+};
+
+
+
+App.View.hideStatus = function() {
+	$('#statusbar').hide('slide', {direction:'down'}, 250, function() {
+		$('#statusbar').html('');
+		$('#statusbar-wrapper').hide();
+	});
+};
