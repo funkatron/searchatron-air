@@ -9,7 +9,7 @@ var FunkyPrefs = function(defaults) {
 		this.defaults = {};
 	}
 
-	this.prefs    = {};
+	this.prefs    = clone(this.defaults);
 
 	/*
 		returns the application storage directory air.File object
@@ -40,7 +40,11 @@ var FunkyPrefs = function(defaults) {
 		if (prefsFile.exists) {
 			var prefsJSON = get_file_contents(prefsFile.url);
 			air.trace(prefsJSON);
-			this.prefs = JSON.parse(prefsJSON);
+			var loaded_prefs = JSON.parse(prefsJSON);
+			for (var key in loaded_prefs) {
+	            this.set(key, loaded_prefs[key]);
+        	}
+
 		} else {
 			init_file(prefsFile.url);
 			set_file_contents(prefsFile.url, this.defaults, true);
@@ -49,6 +53,7 @@ var FunkyPrefs = function(defaults) {
 
 		return prefsFile;
 	}
+	
 	
 	/*
 		
@@ -73,6 +78,35 @@ var FunkyPrefs = function(defaults) {
 			return false
 		}
 	}
+	
+	/*
+		Saves the size and placement of the window this executes in
+	*/
+	this.saveWindowState = function() {
+		this.set('__window-height', window.nativeWindow.width);
+		this.set('__window-height', window.nativeWindow.height);
+		this.set('__window-x', window.nativeWindow.x);
+		this.set('__window-y', window.nativeWindow.y);
+	}
+
+	/*
+		Loads the size and placement of the window this executes in
+	*/
+	this.loadWindowState = function() {
+		var width  = this.get('__window-height');
+		var height = this.get('__window-height');
+		var x      = this.get('__window-x');
+		var y      = this.get('__window-y');
+		
+		if (x && y && width && height) {
+			window.nativeWindow.width  = width;
+			window.nativeWindow.height = height;
+			window.nativeWindow.x = x;
+			window.nativeWindow.y = y;
+		}
+		
+	}
+	
 	
 	/*
 		get an encrypted preference

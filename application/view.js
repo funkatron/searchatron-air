@@ -5,7 +5,7 @@
 App.View = {}
 
 App.View.init = function() {
-	
+	App.Prefs.loadWindowState();
 };
 
 
@@ -23,12 +23,21 @@ App.View.createMessageElement = function(msgobj) {
 	msgelm += '<li class="message" id="'+msgobj.id+'">';
 	msgelm += '<div class="message-avatar"><a href="http://twitter.com/'+msgobj.from_user+'" title="'+msgobj.from_user+'"><img src="'+msgobj.profile_image_url+'" title="'+msgobj.from_user+'" /></a></div>';
 	msgelm += '<div class="message-body">';
-	msgelm += '<div class="message-text">'+autolink(msgobj.text)+'</div>';
-	msgelm += '<div class="message-meta"><a href="http://twitter.com/'+msgobj.from_user+'/status/'+msgobj.id+'">'+get_relative_time(msgobj.created_at)+' #</a></div>';
+	msgelm += '<div class="message-text"><strong><a href="http://twitter.com/'+msgobj.from_user+'" title="'+msgobj.from_user+'">'+msgobj.from_user +'</a>:</strong> ';
+	msgelm += autolink_twitter(autolink(msgobj.text));
+	msgelm += '</div>';
+	msgelm += '<div class="message-meta"><a href="http://twitter.com/'+msgobj.from_user+'/status/'+msgobj.id+'">'+get_relative_time(msgobj.created_at)+'</a> <a href="http://twitter.com/home?status=@'+msgobj.from_user+'&in_reply_to_status_id='+msgobj.id+'">↩</a></div>';
 	msgelm += '</div>';
 	msgelm += '</li>';
 	return msgelm;
 };
+
+
+
+App.View.setSelectedSearch = function(selected_elm) {
+	$('.saved-search').removeClass('selected');
+	$(selected_elm).addClass('selected');
+}
 
 
 App.View.clearMessageList = function() {

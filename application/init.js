@@ -12,16 +12,23 @@ App.init = function() {
 		Init and load prefs
 	*/
 	App.Prefs = new FunkyPrefs({
-		'searches':['spaz', 'al3x', 'poop']
+		'searches':['spaz', 'al3x', 'poop'],
+		'post-via':'web',
+		'refresh-rate':1000*120, // two minutes
 	});
 	App.Prefs.load();
 	
-	
-	
+
+
 	App.View.init();
 	
 	App.Model.init();
 	
 	App.Controller.init();
+	
+	/*
+		Make window visible now that all is loaded
+	*/
+	window.nativeWindow.visible = true;
 	
 };

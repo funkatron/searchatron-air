@@ -1,7 +1,16 @@
 body {
-	font-family: Arial, "MS Trebuchet", sans-serif;
+	font-family: Tahoma, Arial, "MS Trebuchet", sans-serif;
 	-webkit-user-select:none;
 	overflow:none;
+}
+
+a:link, a:visited, a:active {
+	text-decoration: none;
+	color:#555588;
+}
+
+a:link:hover {
+	border-bottom: 1px dotted #555588;
 }
 
 #sidebar {
@@ -28,8 +37,9 @@ body {
 	#sidebar ul#saved-searches {
 
 		margin:  0;
-		padding: 10px 5px;
+		padding: 8px 5px;
 		list-style: none;
+		font-size:11px;
 	}
 
 		#sidebar ul li.saved-search {
@@ -42,10 +52,16 @@ body {
 			cursor:pointer;
 			-webkit-user-select:text;
 		}
-		#sidebar ul li.saved-search:hover {
-			background:#333366;
-			color:#FFFFFF;
-		}
+			#sidebar ul li.saved-search:hover {
+				background:#444477;
+				color:#FFFFFF;
+			}
+			#sidebar ul li.saved-search.selected {
+				background:#333366;
+				color:#FFFFFF;
+			}
+
+
 
 	#sidebar-buttons {
 		position:absolute;
@@ -121,8 +137,10 @@ ul#messagelist {
 			-webkit-user-select:text;
 		}
 		.message .message-meta {
+			margin-top:.5em;
 			font-size:90%;
 			-webkit-user-select:text;
+			text-align:right;
 		}
 		
 		
@@ -134,6 +152,7 @@ ul#messagelist {
 	right:    20px;
 	display:  none;
 	height:   17px;
+	overflow: hidden;
 }
 	#statusbar {
 		padding:    3px;
@@ -143,10 +162,12 @@ ul#messagelist {
 		color:     #FFF;
 		position:  absolute;
 		-webkit-border-top-right-radius:5px;
-		-webkit-border-top-left-radius:5px;
+		-webkit-border-top-left-radius: 5px;
 		display:  none;
-		position:absolute;
+		position: absolute;
 		left:       0px;
 		right:      0px;
+		height:    17px;
+		overflow: hidden;
 	}
 

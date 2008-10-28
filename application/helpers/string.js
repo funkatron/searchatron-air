@@ -65,3 +65,29 @@ function autolink(str, type, popup) {
 
 
 }
+
+/*
+	turns twitter style username refs ('@username') into links
+*/
+function autolink_twitter(str) {
+	re_uname = /(^|\s|\(\[)@([a-zA-Z0-9_]+)([^a-zA-Z0-9_]|$)/gi
+	
+	var ms = [];
+	while (ms = re_uname.exec(str))
+	{
+		
+		/*
+			sometimes we can end up with a null instead of a blank string,
+			so we need to force the issue in javascript.
+		*/
+		for (var x=0; x<ms.length; x++) {
+			if (!ms[x]) {
+				ms[x] = '';
+			}
+		}
+		str = str.replace(ms[0], ms[1]+'<a href="http://twitter.com/'+ms[2]+'">@'+ms[2]+'<a/>'+ms[3]);
+		air.trace(str);
+
+	}
+	return str;
+}
