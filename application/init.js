@@ -15,6 +15,7 @@ App.init = function() {
 		'searches':['spaz', 'al3x', 'poop'],
 		'post-via':'web',
 		'refresh-rate':1000*120, // two minutes
+		'users':{}
 	});
 	App.Prefs.load();
 	
@@ -25,6 +26,7 @@ App.init = function() {
 	App.Model.init();
 	
 	App.Controller.init();
+	
 	
 	/*
 		Make window visible now that all is loaded

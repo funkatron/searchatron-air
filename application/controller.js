@@ -39,6 +39,10 @@ App.Controller.init = function() {
 			App.View.promptForNewSearch();
 		},
 
+		'#open-prefs': function(e) {
+			alert("prefs not yet implemented");
+		},
+
 	} );
 	$('#sidebar').intercept( 'contextmenu', {
 		
