@@ -6,58 +6,57 @@ body {
 
 a:link, a:visited, a:active {
 	text-decoration: none;
-	color:#555588;
+	color:#144FAE;
 }
 
 a:link:hover {
-	border-bottom: 1px dotted #555588;
+	border-bottom: 1px dotted #FFFF99;
 }
 
 #sidebar {
-	width:150px;
+	width:161px;
 	position:absolute;
-	background-color:#CCCCEE;
-	padding:5px;
+	background-color:#D4DDE6;
+	background-repeat:repeat-x;
+	padding:5px 0px;
+	border-right: 1px solid #B8B8B8;
 	left:   0px;
-	right:160px;
+	right:162px;
 	bottom: 0px;
 	top:    0px;
-	border-right:1px solid #999;
 }
 
 	#sidebar #searches-wrapper {
 		overflow:auto;
 		position:absolute;
 		top:     0px;
-		bottom: 35px;
+		bottom: 25px;
 		left:    0px;
 		right:   0px;
 	}
 
 	#sidebar ul#saved-searches {
-
-		margin:  0;
-		padding: 8px 5px;
+		margin:  0px;
+		padding: 0px;
 		list-style: none;
 		font-size:11px;
 	}
 
 		#sidebar ul li.saved-search {
-			margin:  0 0 10px 0;
+			margin: 0;
 			padding:10px;
 			list-style: none;
-			background:#666699;
-			color:#FFFFFF;
-			-webkit-border-radius:15px;
+			color:#555555;
 			cursor:pointer;
 			-webkit-user-select:text;
+			text-transform: uppercase;
+			font-weight:bold;
 		}
 			#sidebar ul li.saved-search:hover {
-				background:#444477;
-				color:#FFFFFF;
+				color:#333333;
 			}
 			#sidebar ul li.saved-search.selected {
-				background:#333366;
+				background:#8097BD;
 				color:#FFFFFF;
 			}
 
@@ -68,31 +67,30 @@ a:link:hover {
 		height:  25px;
 		bottom:   0px;
 		left:     0px;
-		width:  150px;
-		padding:  0px 5px 10px;
-		border-top:1px solid #666;
-		background:#9999CC;
+		width:  161px;
+		padding:  0px;
+		border-top:1px solid #B8B8B8;
+		background:#E0E0E0;
 	}
 		#sidebar-buttons .button {
-/*			height:    20px;*/
+			height:20px;
 			display:block;
 			float:left;
 			text-align:center;
-/*			border:1px solid #333366;*/
-			color:     #333366;
+			color:     #555555;
 			font-size: 18pt;
-			font-weight:normal;
-			padding:   1px 4px 4px;
-			margin: 5px 8px 0 0;
+			font-weight:bold;
+			padding:   5px 4px 0px;
 			cursor:    pointer;
-			-webkit-border-radius:7px;
 			line-height:11pt;
 			font-family:Arial;
-			font-size:18pt;
+			font-size:  9pt;
+			border-right: 1px solid #B8B8B8;
+			text-transform: uppercase;
 		}
 		#sidebar-buttons .button:hover {
-			background:#333366;
-			color:#FFFFFF;
+			color:#000000;
+			background:#CCCCCC;
 		}
 		
 		
@@ -104,8 +102,8 @@ a:link:hover {
 	bottom: 0px;
 	top:0px;
 	position:absolute;
-	background-color:#FFFFFF;
 	overflow:auto;
+	color:#000000;
 	
 }
 
@@ -123,13 +121,10 @@ ul#messagelist {
 		min-height:56px;		
 	}
 	li.message+li.message {
-		border-top:1px solid #CCC;
+/*		border-top:1px solid #CCC;*/
 	}
 		li.message.even {
-			background:#FFFFEE;
-		}
-		li.message.even {
-			background:#EEEEFF;
+			background:#E9E9E9;
 		}
 		.message .message-avatar {
 			text-align:center;
@@ -147,7 +142,7 @@ ul#messagelist {
 			text-align:right;
 		}
 		.message .button {
-			font-family:Arial;
+			font-family: Arial;
 			font-size:10pt;
 		}
 			.message-action-reply {
