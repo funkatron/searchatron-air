@@ -23,7 +23,7 @@ App.Model.getSearchResults = function(searchstr) {
 		'url':'http://search.twitter.com/search.json?',
 		'data':{
 			"rpp": 50,
-			"q":   searchstr,
+			"q":   searchstr
 		},
 		'dataType':'text',
 		'type':'GET',

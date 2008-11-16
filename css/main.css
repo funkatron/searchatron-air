@@ -82,12 +82,13 @@ a:link:hover {
 			color:     #333366;
 			font-size: 18pt;
 			font-weight:normal;
-			
 			padding:   1px 4px 4px;
 			margin: 5px 8px 0 0;
 			cursor:    pointer;
 			-webkit-border-radius:7px;
 			line-height:11pt;
+			font-family:Arial;
+			font-size:18pt;
 		}
 		#sidebar-buttons .button:hover {
 			background:#333366;
@@ -145,6 +146,13 @@ ul#messagelist {
 			-webkit-user-select:text;
 			text-align:right;
 		}
+		.message .button {
+			font-family:Arial;
+			font-size:10pt;
+		}
+			.message-action-reply {
+				vertical-align:-30%
+			}
 		
 		
 #statusbar-wrapper {

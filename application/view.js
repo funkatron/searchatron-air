@@ -26,7 +26,7 @@ App.View.createMessageElement = function(msgobj) {
 	msgelm += '<div class="message-text"><strong><a href="http://twitter.com/'+msgobj.from_user+'" title="'+msgobj.from_user+'">'+msgobj.from_user +'</a>:</strong> ';
 	msgelm += autolink_twitter(autolink(msgobj.text));
 	msgelm += '</div>';
-	msgelm += '<div class="message-meta"><a href="http://twitter.com/'+msgobj.from_user+'/status/'+msgobj.id+'">'+get_relative_time(msgobj.created_at)+'</a> <a href="http://twitter.com/home?status=@'+msgobj.from_user+'&in_reply_to_status_id='+msgobj.id+'">↩</a></div>';
+	msgelm += '<div class="message-meta"><a href="http://twitter.com/'+msgobj.from_user+'/status/'+msgobj.id+'">'+get_relative_time(msgobj.created_at)+'</a> <a class="button message-action message-action-reply" href="http://twitter.com/home?status=@'+msgobj.from_user+'&in_reply_to_status_id='+msgobj.id+'">↩</a></div>';
 	msgelm += '</div>';
 	msgelm += '</li>';
 	return msgelm;

@@ -32,7 +32,7 @@ function autolink(str, type, popup) {
 
 			var newstr = ms[1]+'<a href="http'+ms[4]+'://'+ms[5]+ms[6]+'"'+pop+'>http'+ms[4]+'://'+ms[5]+ms[6]+'</a>'+period;
 			str = str.replace(ms[0], newstr);
-			air.trace(str)
+			//air.trace(str)
 
 		}
 	}
@@ -57,7 +57,7 @@ function autolink(str, type, popup) {
 				}
 			}
 			str = str.replace(ms[0], ms[1]+'<a href="mailto:'+ms[2]+'@'+ms[3]+'.'+ms[4]+ms[5]+'">'+ms[2]+'@'+ms[3]+'.'+ms[4]+ms[5]+'<a/>'+period);
-			air.trace(str);
+			//air.trace(str);
 		}
 	}
 
@@ -86,7 +86,7 @@ function autolink_twitter(str) {
 			}
 		}
 		str = str.replace(ms[0], ms[1]+'<a href="http://twitter.com/'+ms[2]+'">@'+ms[2]+'<a/>'+ms[3]);
-		air.trace(str);
+		//air.trace(str);
 
 	}
 	return str;
